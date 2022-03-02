@@ -1,0 +1,22 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'env,refresh'
+
+spring:
+  application:
+    name: demo
+  cloud:
+    config:
+      label: master
+      server:
+        bootstrap: true
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:192.168.1.55}:3306/config_table
+    username: rams
+
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    continue-on-error: true
+  profiles:
+    active: jdbc
