@@ -5,6 +5,9 @@ management:
         include: 'env,refresh'
 
 spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
   application:
     name: demo
   cloud:
@@ -13,10 +16,8 @@ spring:
       server:
         bootstrap: true
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:192.168.1.55}:3306/config_table
-    username: rams
-
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    schema: classpath:schema-jdbc.sql
+    data: classpath:data-jdbc.sql
     continue-on-error: true
   profiles:
     active: jdbc
